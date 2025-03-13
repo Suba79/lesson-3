@@ -11,9 +11,9 @@ site_name = input("Ссылка на проект - ")
 name_friend = input("Имя друга - ")
 your_name = input("Ваше имя - ")
 
-From = login  
-To = input("Куда отправляем - ")
-Subject = input("Тема письма - ")
+user = login  
+where = input("Куда отправляем - ")
+theme = input("Тема письма - ")
 
 text = """
 Привет, %friend_name%! %my_name% приглашает тебя на сайт %website%!
@@ -44,7 +44,7 @@ Subject: {2}
 Content-Type: text/plain; charset="UTF-8";
 
 {3}
-""".format(From, To, Subject, text)
+""".format(user, where, theme, text)
 
 letter = letter.encode("UTF-8")
 
@@ -52,7 +52,7 @@ smtp_server = "smtp.yandex.ru"
 smtp_port = 465
 server = smtplib.SMTP_SSL(smtp_server, smtp_port)
 server.login(login, password)
-server.sendmail(From, To, letter)
+server.sendmail(user, where, letter)
 server.quit()
 
 
